@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ruleta</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section class="card loading-screen" id="loading-screen" aria-live="polite">
+        <img class="loading-image" src="Pojďte si vsadit.webp" alt="Pojďte si vsadit" />
+        <p class="loading-text">Načítání hry...</p>
+      </section>
+
+      <section class="card card--game" id="game-screen">
+        <p class="eyebrow">RULETA U SONYHO</p>
+        <h1>Vyber si sázku</h1>
+
+        <div class="wheel-wrap" aria-label="Ruletové kolo">
+          <div class="wheel-pointer" aria-hidden="true"></div>
+          <div id="wheel" class="wheel"></div>
+        </div>
+
+        <div class="bet-group" role="radiogroup" aria-label="Možnost sázky">
+          <button class="bet-btn bet-btn--red" data-bet="red" type="button">Červená</button>
+          <button class="bet-btn bet-btn--black" data-bet="black" type="button">Černá</button>
+          <button class="bet-btn bet-btn--zero" data-bet="zero" type="button">Nula</button>
+        </div>
+
+        <button id="spin-btn" class="spin-btn" type="button" disabled>Roztočit ruletu</button>
+
+        <p id="status" class="status">Nejdřív zvol sázku.</p>
+      </section>
+
+      <section class="card result result--win hidden" id="win-screen" aria-live="polite">
+        <p class="result-roll" id="win-roll-result"></p>
+        <video class="result-video" id="win-video" loop muted autoplay playsinline preload="auto">
+          <source src="Win.mp4" type="video/mp4" />
+          <source src="win.mov" type="video/quicktime" />
+          <source src="Win.mov" type="video/quicktime" />
+          Tvůj prohlížeč nepodporuje přehrávání videa.
+        </video>
+        <h2>RISK JE ZIK. GRATLUJEME!</h2>
+        <button class="reset-btn" type="button" data-reset>Hrát znovu</button>
+      </section>
+
+      <section class="card result result--lose hidden" id="lose-screen" aria-live="polite">
+        <p class="result-roll" id="lose-roll-result"></p>
+        <video class="result-video" id="lose-video" loop muted autoplay playsinline preload="auto">
+          <source src="Lose.mp4" type="video/mp4" />
+          <source src="lose.mov" type="video/quicktime" />
+          <source src="Lose.MOV" type="video/quicktime" />
+          Tvůj prohlížeč nepodporuje přehrávání videa.
+        </video>
+        <h2>ZA TU PRDEL TO STÁLO, NE?</h2>
+        <button class="reset-btn" type="button" data-reset>Zkusit znovu</button>
+      </section>
+    </main>
+
+    <canvas id="confetti-canvas" class="confetti hidden" aria-hidden="true"></canvas>
+    <script src="app.js"></script>
+  </body>
+</html>
